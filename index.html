@@ -116,20 +116,20 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ messages: [{ role: "user", content: userInput }] })
+                body: JSON.stringify({ question: userInput }) // <== DAS ist der Fix
             })
-                .then(response => response.json())
-                .then(data => {
-                    var formattedResponse = formatResponse(data.response);
-                    document.getElementById('response').innerHTML = `<strong>Response:</strong><br>${formattedResponse}`;
-                    document.getElementById('response').style.display = 'block';
-                    updateHistory(userInput, formattedResponse);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('response').innerHTML = "An error occurred while processing your request.";
-                    document.getElementById('response').style.display = 'block';
-                });
+            .then(response => response.json())
+            .then(data => {
+                var formattedResponse = formatResponse(data.response);
+                document.getElementById('response').innerHTML = `<strong>Response:</strong><br>${formattedResponse}`;
+                document.getElementById('response').style.display = 'block';
+                updateHistory(userInput, formattedResponse);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('response').innerHTML = "An error occurred while processing your request.";
+                document.getElementById('response').style.display = 'block';
+            });
         }
 
         function formatResponse(response) {
