@@ -1,2 +1,3 @@
-# MINT-AI-ONLINE
-MINT AI on a website
+# LATIN-AI-ONLINE
+LATIN AI on a website
+
